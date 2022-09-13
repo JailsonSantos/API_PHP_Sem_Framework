@@ -1,0 +1,26 @@
+### Login
+
+POST http://localhost/Api2022/users/login HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+
+login=Jailson
+&password=123456
+
+### Listar todas as URLs
+GET http://localhost/Api2022/urls/listar HTTP/1.1
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjEiLCJuYW1lIjoiSmFpbHNvbiBTYW50b3MiLCJleHBpcmVzX2luIjoxNjYzMTU4MDIxfQ.TIkXcXajhebrnj6Tfv8GmwDpzOF2MF13lx6VW9wvCq4
+
+
+### Listar uma URL pelo ID
+GET http://localhost/Api2022/urls/listar/3 HTTP/1.1
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjEiLCJuYW1lIjoiSmFpbHNvbiBTYW50b3MiLCJleHBpcmVzX2luIjoxNjYzMTU4MDIxfQ.TIkXcXajhebrnj6Tfv8GmwDpzOF2MF13lx6VW9wvCq4
+
+### Atualizar uma URL pelo ID
+POST http://localhost/Api2022/urls/atualizar/3 HTTP/1.1
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjEiLCJuYW1lIjoiSmFpbHNvbiBTYW50b3MiLCJleHBpcmVzX2luIjoxNjYzMTU4MDIxfQ.TIkXcXajhebrnj6Tfv8GmwDpzOF2MF13lx6VW9wvCq4
+Content-Type: application/x-www-form-urlencoded
+
+_method=PUT
+&url_short=jaja2022
+
+
