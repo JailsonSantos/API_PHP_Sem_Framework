@@ -5,14 +5,14 @@ class Urls
   public function listarTodos()
   {
     $db = DB::connect();
-    $response = $db->prepare("SELECT * from urls ORDER BY url_short");
+    $response = $db->prepare("SELECT * from urls ORDER BY id");
     $response->execute();
     $object = $response->fetchAll(PDO::FETCH_ASSOC);
 
     if ($object) {
-      echo json_encode(["Dados" => $object]);
+      echo json_encode(["status" => "success", "data" => $object, "totalCount" => count($object)]);
     } else {
-      echo json_encode(["Dados" => "Nenhum dado encontrado!"]);
+      echo json_encode(["message" => 'Não existem dados para retornar']);
     }
   }
   public function listarUnico($param)
@@ -23,9 +23,9 @@ class Urls
     $object = $response->fetchObject();
 
     if ($object) {
-      echo json_encode(["Dados" => $object]);
+      echo json_encode(["status" => "success", "data" => $object]);
     } else {
-      echo json_encode(["Dados" => "Nenhum dado encontrado!"]);
+      echo json_encode(["message" => 'O ID informado não foi localizado!']);
     }
   }
   public function adicionar()
@@ -61,9 +61,9 @@ class Urls
     $result = $response->execute();
 
     if ($result) {
-      echo json_encode(["Dados" => "Dados inseridos com Sucesso!"]);
+      echo json_encode(["status" => "success", "message" => "Dados inseridos com sucesso!"]);
     } else {
-      echo json_encode(["Dados" => "Erro ao inserir os dados!"]);
+      echo json_encode(["status" => "error", "message" => "Erro ao inserir os dados!"]);
     }
   }
 
@@ -90,9 +90,9 @@ class Urls
     $result = $response->execute();
 
     if ($result) {
-      echo json_encode(["Dados" => "Dados atualizados com sucesso!"]);
+      echo json_encode(["status" => "success", "message" => "Dados atualizados com sucesso!"]);
     } else {
-      echo json_encode(["Dados" => "Erro ao atualizar os dados!"]);
+      echo json_encode(["status" => "error", "message" => "Erro ao atualizar os dados!"]);
     }
   }
 
@@ -103,9 +103,9 @@ class Urls
     $result = $response->execute();
 
     if ($result) {
-      echo json_encode(["Dados" => "URL excluida com sucesso!"]);
+      echo json_encode(["status" => "success", "message" => "URL de ID:{$param} excluida com sucesso!"]);
     } else {
-      echo json_encode(["Dados" => "Erro ao excluir a url!"]);
+      echo json_encode(["status" => "error", "message" => "Erro ao excluir a url de ID:{$param}"]);
     }
   }
 }

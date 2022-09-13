@@ -15,6 +15,8 @@ new Autoload();
 $rota = new Rotas();
 $rota->add('POST', '/users/login', 'Users::login', false);
 $rota->add('GET', '/urls/listar', 'Urls::listarTodos', true);
+$rota->add('POST', '/urls/adicionar', 'Urls::adicionar', true);
 $rota->add('GET', '/urls/listar/[PARAM]', 'Urls::listarUnico', true);
 $rota->add('PUT', '/urls/atualizar/[PARAM]', 'Urls::atualizar', true);
+$rota->add('DELETE', '/urls/deletar/[PARAM]', 'Urls::deletar', true);
 $rota->ir($_GET['path']);

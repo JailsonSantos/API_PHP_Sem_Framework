@@ -45,12 +45,12 @@ class Users
           echo json_encode(['token' => $token, 'data' => JWT::decode($token, $secretJWT)]);
         } else {
           if (!$validPassword) {
-            echo json_encode(['ERROR', 'Username or password is invalid!']);
+            echo json_encode(['status' => 'error', 'message' => 'Usuário e|ou senha inválido(a)!']);
           }
         }
       }
     } else {
-      echo json_encode(['ERRO' => 'Falta informações']);
+      echo json_encode(['status' => 'error', 'message' => 'Usuario e senha são obrigatórios!']);
       exit;
     }
   }
@@ -58,10 +58,10 @@ class Users
   public function verificar()
   {
     $headers = apache_request_headers();
-    if (isset($headers['authorization'])) {
-      $token = str_replace("Bearer ", "", $headers['authorization']);
+    if (isset($headers['Authorization'])) {
+      $token = str_replace("Bearer ", "", $headers['Authorization']);
     } else {
-      echo json_encode(['ERRO' => 'Você não está logado, ou seu token é inválido.']);
+      echo json_encode(['status' => 'error', 'message' => 'Você não está logado, ou seu token é inválido.']);
       exit;
     }
 
